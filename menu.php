@@ -12,7 +12,7 @@
         <a href="index.php" class="logo">Java</a>
         <div class="topnavs">
             <a href="menu.php" class="top-nav">Menu</a>
-            <a href="" class="top-nav">Shopping cart</a>
+            <a href="cart.php?id=0" class="top-nav">Shopping cart</a>
         </div>
     </header>
     <h1>
@@ -20,13 +20,9 @@
     </h1>
 
     <h1 class="menu_label">
-Our menu:
+        Our menu:
     </h1>
-    <?php
-     function addingToTheCart($idd){
-        $qr_result = mysqli_query($db, "INSERT INTO `orders` VALUES $idd, $idd");
-            } 
-        
+    <?php  
         require("conn.php");
         $db_table_to_show = 'menu';  
         //использование развлетвления
@@ -39,12 +35,13 @@ Our menu:
         echo '<th>' . 'Photo' . '</th>';
         echo '<th>' . 'Add to a shopping cart' . '</th>';
         //использование цикла
+        $total_price = 0;
         while($data = mysqli_fetch_array($qr_result)){
         echo '<tr>';
         echo '<td>' . $data['id'] . '</td>';
         echo '<td>' . $data['dish'] . '</td>';
         echo '<td>' . $data['price'] . '</td>';
-
+        $total_price = $total_price + $data['price'];
         //вывод картинки
         $image = $data['photo'];
         $imageData = base64_encode(file_get_contents($image));
@@ -52,11 +49,16 @@ Our menu:
         echo '<img style = "width:200px; height: 200px;"src="data:image/jpeg;base64,'.$imageData.'">';
         echo'</td>';
         echo'<td>';
-        echo'<button action = "<? addingToTheCart('.$data['id'].')?>" id = '.$data['id'].'>';
-        echo'add to the cart';
-        echo'</td>';
+        echo'<a href = "cart.php?id='.$data["id"].'"</a>';
+        echo'<input class = "submit-btn" type = "submit" value = "Add to the cart" id = '.$data['id'].'>';
+      // echo'<input type = "submit" value = "Add to the cart" name = "submit"'; 
+       //echo'</td>';
+       //echo'</tr>';
+        }
+       echo '</table>';
+       if(isset($_POST['submit'])){
+        header("location.php");
     }
-echo '</table>';
     ?>
 </body>
 </html>

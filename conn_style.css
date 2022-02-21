@@ -48,3 +48,24 @@ margin-bottom: 100px;
     width: 20%;
     text-align: center;
 }
+.tot_price{
+    text-align: center;
+}
+
+.main_heading{
+    text-align: center;
+    padding-top: 5%;
+    font-size: 72px;
+}
+
+.total_price{
+    text-align: center;
+}
+
+.submit-btn{
+    height: 200px;
+    width: 100%;
+    font-size: 32px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}

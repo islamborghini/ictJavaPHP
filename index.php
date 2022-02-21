@@ -12,7 +12,7 @@
         <a href="index.php" class="logo">Java</a>
         <div class="topnavs">
             <a href="menu.php" class="top-nav">Menu</a>
-            <a href="" class="top-nav">Shopping cart</a>
+            <a href="cart.php?id=0" class="top-nav">Shopping cart</a>
         </div>
     </header>
     <div class="wrapper">
@@ -34,7 +34,7 @@
             <p>
                 Our company has 
                 a great experience in working with fastfood.
-                        </p>
+            </p>
             </p>
         </div>
         <div class="about-div">
